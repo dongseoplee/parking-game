@@ -26,6 +26,8 @@ let gui;
 
 // show and move cube
 let cubeThree;
+let cubeThree2;
+let cubeThree3;
 let keyboard = {};
 
 // camera follow player
@@ -36,6 +38,8 @@ let world;
 let cannonDebugger;
 let timeStep = 1 / 60;
 let cubeBody, planeBody;
+let cubeBody2;
+let cubeBody3;
 let slipperyMaterial, groundMaterial;
 let obstacleBody;
 let obstaclesBodies = [];
@@ -114,6 +118,9 @@ async function init() {
   moveCar();
   moveCamera();
 
+  addObstacle();
+  addObstacleBody();
+
   //주차 검사 로직 비동기
   
 
@@ -140,6 +147,7 @@ function animate(){
   cubeThree.position.y = cubeBody.position.y - 1.3;
   cubeThree.quaternion.copy(cubeBody.quaternion);
 
+
   for (let i = 0; i < obstaclesBodies.length; i++) {
     obstaclesMeshes[i].position.copy(obstaclesBodies[i].position);
 		obstaclesMeshes[i].quaternion.copy(obstaclesBodies[i].quaternion);
@@ -153,7 +161,7 @@ function animate(){
 function addCubeBody(){
   let cubeShape = new CANNON.Box(new CANNON.Vec3(1.2,1,3));
   //slipperyMaterial = new CANNON.Material('slippery');
-  cubeBody = new CANNON.Body({ mass: 1 });
+  cubeBody = new CANNON.Body({ mass: 4 });
   cubeBody.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
 
 
@@ -169,6 +177,7 @@ function addCubeBody(){
   })
  
   world.addBody(cubeBody);
+  
 }
 
 
@@ -261,7 +270,16 @@ async function addCube(){
 
 	cubeThree = carLoaddedd.scene.children[0];
   cubeThree.position.set(0, 1, 10);
-  scene.add(cubeThree)
+  scene.add(cubeThree);
+
+  const carLoaddedd2 = await gltfLoader.loadAsync( 'std_car01.glb' );
+
+
+	cubeThree2 = carLoaddedd2.scene.children[0];
+  cubeThree2.position.set(-10, 1, -24);
+  scene.add(cubeThree2);
+
+
 
 }
 
@@ -394,39 +412,18 @@ function followPlayer(){
   
 }
 
-
 function addGUI(){
-  gui = new GUI();
-  const options = {
-		flyControls: true
-	}
+  controls.enabled = true;
+  enableFollow = false;
 
-  gui.add(options, 'flyControls').onChange( value => {
-		if (value){
-      //체크 됐을 때
-      console.log("4567");
-			controls.enabled = false;
-			enableFollow = true;
-		}else{
-      //체크 안됐을 때
-      console.log("123");
-			controls.enabled = true;
-			enableFollow = false;
-		}
-	});
-  gui.hide();
+document.addEventListener("keydown", (event) => {
+  if (event.key === "g") {
 
-
-  // show and hide GUI if user press g
-  window.addEventListener('keydown', function(event){
-    if(event.keyCode == 71){
-      if(gui._hidden){
-        gui.show();
-      }else{
-        gui.hide();
-      }
-    }
-  })
+    camera.position.x = cubeBody.position.x;
+    camera.position.y = cubeBody.position.y + 35;
+    camera.position.z = cubeBody.position.z + 70;
+  }
+});
 
 
 }
@@ -545,7 +542,7 @@ function initCannonDebugger(){
       mesh.visible = false;
 			// Toggle visibiliy on "d" press
 			document.addEventListener("keydown", (event) => {
-				if (event.key === "f") {
+				if (event.key === "c") {
 					mesh.visible = !mesh.visible;
 				}
 			});
