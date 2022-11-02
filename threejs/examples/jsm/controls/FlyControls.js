@@ -64,14 +64,14 @@ class FlyControls extends EventDispatcher {
 				case 'KeyR': this.moveState.up = 1; break;
 				case 'KeyF': this.moveState.down = 1; break;
 
-				case 'ArrowUp': this.moveState.pitchUp = 1; break;
-				case 'ArrowDown': this.moveState.pitchDown = 1; break;
+				// case 'ArrowUp': this.moveState.pitchUp = 1; break;
+				// case 'ArrowDown': this.moveState.pitchDown = 1; break;
 
-				case 'ArrowLeft': this.moveState.yawLeft = 1; break;
-				case 'ArrowRight': this.moveState.yawRight = 1; break;
+				// case 'ArrowLeft': this.moveState.yawLeft = 1; break;
+				// case 'ArrowRight': this.moveState.yawRight = 1; break;
 
-				case 'KeyQ': this.moveState.rollLeft = 1; break;
-				case 'KeyE': this.moveState.rollRight = 1; break;
+				case 'KeyQ': this.moveState.yawLeft = 1; break;
+				case 'KeyE': this.moveState.yawRight = 1; break;
 
 			}
 
@@ -96,14 +96,14 @@ class FlyControls extends EventDispatcher {
 				case 'KeyR': this.moveState.up = 0; break;
 				case 'KeyF': this.moveState.down = 0; break;
 
-				case 'ArrowUp': this.moveState.pitchUp = 0; break;
-				case 'ArrowDown': this.moveState.pitchDown = 0; break;
+				// case 'ArrowUp': this.moveState.pitchUp = 0; break;
+				// case 'ArrowDown': this.moveState.pitchDown = 0; break;
 
-				case 'ArrowLeft': this.moveState.yawLeft = 0; break;
-				case 'ArrowRight': this.moveState.yawRight = 0; break;
+				// case 'ArrowLeft': this.moveState.yawLeft = 0; break;
+				// case 'ArrowRight': this.moveState.yawRight = 0; break;
                 //qe
-				case 'KeyQ': this.moveState.rollLeft = 0; break;
-				case 'KeyE': this.moveState.rollRight = 0; break;
+				case 'KeyQ': this.moveState.yawLeft = 0; break;
+				case 'KeyE': this.moveState.yawRight = 0; break;
 
 			}
 
@@ -122,8 +122,8 @@ class FlyControls extends EventDispatcher {
 
 				switch ( event.button ) {
 
-					case 0: this.moveState.forward = 1; break;
-					case 2: this.moveState.back = 1; break;
+					case 0: this.moveState.forward = 0; break;
+					case 2: this.moveState.back = 0; break;
 
 				}
 
@@ -137,12 +137,12 @@ class FlyControls extends EventDispatcher {
 
 			if ( ! this.dragToLook || this.status > 0 ) {
 
-				const container = this.getContainerDimensions();
-				const halfWidth = container.size[ 0 ] / 2;
-				const halfHeight = container.size[ 1 ] / 2;
+				// const container = this.getContainerDimensions();
+				// const halfWidth = container.size[ 0 ] / 2;
+				// const halfHeight = container.size[ 1 ] / 2;
 
-				this.moveState.yawLeft = - ( ( event.pageX - container.offset[ 0 ] ) - halfWidth ) / halfWidth;
-				this.moveState.pitchDown = ( ( event.pageY - container.offset[ 1 ] ) - halfHeight ) / halfHeight;
+				// this.moveState.yawLeft = - ( ( event.pageX - container.offset[ 0 ] ) - halfWidth ) / halfWidth;
+				// this.moveState.pitchDown = ( ( event.pageY - container.offset[ 1 ] ) - halfHeight ) / halfHeight;
 
 				this.updateRotationVector();
 
