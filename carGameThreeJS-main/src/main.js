@@ -132,6 +132,7 @@ async function init() {
 
   //addWallBody();
   addWall();
+  addWall2();
 
 
 	addGUI();
@@ -154,6 +155,25 @@ function addWall() {
   //각도
   planeThree.quaternion.setFromAxisAngle(new CANNON.Vec3(80, 0, 0), Math.PI / 180);
 
+    // change rotation
+
+  scene.add(planeThree);
+
+}
+
+function addWall2() {
+
+  const texture = new THREE.TextureLoader().load( "src/assets/wall3.jpeg" );
+
+  //크기
+  let geometry =  new THREE.BoxGeometry(100, 0, 50);
+  let material = new THREE.MeshBasicMaterial({map: texture});
+  let planeThree = new THREE.Mesh(geometry, material);
+
+  //위치
+  planeThree.position.set(-1, 30,-100);
+  //각도
+  planeThree.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), Math.PI / 180 * 90);
     // change rotation
 
   scene.add(planeThree);
