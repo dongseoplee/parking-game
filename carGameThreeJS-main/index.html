@@ -31,6 +31,29 @@
   </div>
 
 
+  <script>
+    var time = 10;
+    var min = "";
+    var sec = "";
+
+    var x = setInterval(function(){
+      min = parseInt(time/60);
+      sec=time%60;
+      document.getElementById("timer").innerHTML=min+"m"+" "+sec+"s";
+      time--;
+
+      if(time<0){
+        clearInterval (x);
+        document.getElementById("timer").innerHTML = "Time Over"
+      }
+    },1000);
+  </script>
+
+  <div id="instructions">
+
+    <br>
+    <h1 id="timer"></h1>
+  </div>
     <!-- 화면 오른쪽 방향키 -->
     <img id = "arrowRight" src="src/assets/keyboard/arrowRight.png" alt="My Image" width="75" height="75" 
     style= "position: absolute; bottom:50px; right:20;">
