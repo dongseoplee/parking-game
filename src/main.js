@@ -147,17 +147,28 @@ function animate(){
   cubeThree.position.y = cubeBody.position.y - 1.3;
   cubeThree.quaternion.copy(cubeBody.quaternion);
 
+  //2
+  cubeThree2.position.copy(cubeBody2.position);
+  cubeThree2.quaternion.copy(cubeBody2.quaternion);
+
+   //3
+   cubeThree3.position.copy(cubeBody3.position);
+   cubeThree3.quaternion.copy(cubeBody3.quaternion);
+
+
 
   for (let i = 0; i < obstaclesBodies.length; i++) {
     obstaclesMeshes[i].position.copy(obstaclesBodies[i].position);
 		obstaclesMeshes[i].quaternion.copy(obstaclesBodies[i].quaternion);
 	}
-  controls.update(0.05);
 
+  //flyControls
+  controls.update(0.05);
 	requestAnimationFrame(animate);
 
 }
 
+//cannon square
 function addCubeBody(){
   let cubeShape = new CANNON.Box(new CANNON.Vec3(1.2,1,3));
   //slipperyMaterial = new CANNON.Material('slippery');
@@ -176,7 +187,36 @@ function addCubeBody(){
     chassisBody : cubeBody
   })
  
-  world.addBody(cubeBody);
+  world.addBody(cubeBody);  
+
+  //2
+  let cubeShape2 = new CANNON.Box(new CANNON.Vec3(4, 1, 0.5)); //캐논 박스 사이즈
+  //slipperyMaterial = new CANNON.Material('slippery');
+  cubeBody2 = new CANNON.Body({ mass: 4 });
+  cubeBody2.addShape(cubeShape2, new CANNON.Vec3(0,0,0));
+  // change rotation
+  cubeBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), Math.PI / 180 * 270);
+  //cubeBody.position.set(-35, 5, -55);
+  //x + 오른쪽, y + 위쪽, z + 앞쪽
+  cubeBody2.position.set(25, 1, -47); //캐본 박스 위치
+  
+  cubeBody2.linearDamping = 0.5;
+  world.addBody(cubeBody2);
+
+  //3
+  let cubeShape3 = new CANNON.Box(new CANNON.Vec3(2, 3.5, 0.5)); //캐논 박스 사이즈
+  //slipperyMaterial = new CANNON.Material('slippery');
+  cubeBody3 = new CANNON.Body({ mass: 4 });
+  cubeBody3.addShape(cubeShape3, new CANNON.Vec3(0,0,0));
+  // change rotatio
+  cubeBody3.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 1, 1), Math.PI / 180 * 270);
+  //cubeBody.position.set(-35, 5, -55);
+  //x + 오른쪽, y + 위쪽, z + 앞쪽
+  cubeBody3.position.set(25, 6, -35); //캐본 박스 위치
+  
+  cubeBody3.linearDamping = 0.5;
+  world.addBody(cubeBody3);
+  
   
 }
 
@@ -270,14 +310,22 @@ async function addCube(){
 
 	cubeThree = carLoaddedd.scene.children[0];
   cubeThree.position.set(0, 1, 10);
+  cubeThree.scale.set(0.015, 0.015, 0.015);
   scene.add(cubeThree);
 
+  //2
   const carLoaddedd2 = await gltfLoader.loadAsync( 'std_car01.glb' );
-
-
 	cubeThree2 = carLoaddedd2.scene.children[0];
-  cubeThree2.position.set(-10, 1, -24);
+  cubeThree2.scale.set(0.05, 0.03, 0.03);
+  
   scene.add(cubeThree2);
+
+  //3
+  const carLoaddedd3 = await gltfLoader.loadAsync( 'std_car03.glb' );
+	cubeThree3 = carLoaddedd3.scene.children[0];
+  cubeThree3.scale.set(0.15, 0.15, 0.15);
+  
+  scene.add(cubeThree3);
 
 
 
@@ -286,7 +334,7 @@ async function addCube(){
 
 function addPlaneBody(){
   groundMaterial = new CANNON.Material('ground')
-  const planeShape = new CANNON.Box(new CANNON.Vec3(50, 0.01, 50));
+  const planeShape = new CANNON.Box(new CANNON.Vec3(50, 0.00001, 50));
 	planeBody = new CANNON.Body({ mass: 0, material: groundMaterial });
 	planeBody.addShape(planeShape);
 	planeBody.position.set(0, 0, -45);
