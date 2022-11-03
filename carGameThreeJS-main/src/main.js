@@ -577,11 +577,11 @@ function addGUI(){
       document.getElementById("flyCamera").src = "src/assets/camera/flyCamera.png";
       document.getElementById("carCamera").src = "src/assets/camera/carCamera.png";
 
-      isFirstPersonCamera = false
       camera.rotation.x = 0
       camera.rotation.y = 0
       camera.rotation.z = 0
-  
+
+      isFirstPersonCamera = false  
       controls.enabled = false;
       enableFollow = true;
     }
@@ -593,6 +593,10 @@ function addGUI(){
       document.getElementById("flyCamera").src = "src/assets/camera/flyCameraClick.png";
       document.getElementById("carCamera").src = "src/assets/camera/carCamera.png";
 
+      camera.rotation.x = 0
+      camera.rotation.y = 0
+      camera.rotation.z = 0
+      
       isFirstPersonCamera = false
       controls.enabled = true;
       enableFollow = false;
