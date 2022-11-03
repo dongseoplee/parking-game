@@ -26,6 +26,17 @@ let isParking = false
 let cameraWheel
 let isFirstPersonCamera = false
 
+//tree
+
+let tree2
+let tree3
+let tree4
+let tree5
+let tree6
+let tree7
+let tree8
+let tree9
+
 
 
 //
@@ -40,9 +51,6 @@ let cubeBody3
 let cubeBody2ds
 let cubeBody3ds
 let tree
-let tree2
-let tree3
-let tree4
 let statue
 
 let cubeThree2ds
@@ -222,7 +230,7 @@ function animate(){
 function addCubeBody(){
   let cubeShape = new CANNON.Box(new CANNON.Vec3(1.5,1,5));
   //slipperyMaterial = new CANNON.Material('slippery');
-  cubeBody = new CANNON.Body({ mass: 1 });
+  cubeBody = new CANNON.Body({ mass: 4 });
   cubeBody.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
 
   // change rotation
@@ -241,7 +249,7 @@ function addCubeBody(){
   //2
   let cubeShape2ds = new CANNON.Box(new CANNON.Vec3(4, 1, 0.5)); //캐논 박스 사이즈
   //slipperyMaterial = new CANNON.Material('slippery');
-  cubeBody2ds = new CANNON.Body({ mass: 1 });
+  cubeBody2ds = new CANNON.Body({ mass: 4 });
   cubeBody2ds.addShape(cubeShape2ds, new CANNON.Vec3(0,0,0));
   // change rotation
   cubeBody2ds.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), Math.PI / 180 * 270);
@@ -255,7 +263,7 @@ function addCubeBody(){
   //3
   let cubeShape3ds = new CANNON.Box(new CANNON.Vec3(2, 3.5, 0.5)); //캐논 박스 사이즈
   //slipperyMaterial = new CANNON.Material('slippery');
-  cubeBody3ds = new CANNON.Body({ mass: 1 });
+  cubeBody3ds = new CANNON.Body({ mass: 4 });
   cubeBody3ds.addShape(cubeShape3ds, new CANNON.Vec3(0,0,0));
   // change rotatio
   cubeBody3ds.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 1, 1), Math.PI / 180 * 270);
@@ -267,7 +275,7 @@ function addCubeBody(){
   world.addBody(cubeBody3ds);
 
 
-  cubeBody2 = new CANNON.Body({ mass: 1 });
+  cubeBody2 = new CANNON.Body({ mass: 5 });
   cubeBody2.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
   // change rotation
   cubeBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180*90);
@@ -275,7 +283,7 @@ function addCubeBody(){
   cubeBody2.linearDamping = 0.5;
   world.addBody(cubeBody2);
 
-  cubeBody3 = new CANNON.Body({ mass: 1 });
+  cubeBody3 = new CANNON.Body({ mass: 5 });
   cubeBody3.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
   cubeBody3.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180*90);
   cubeBody3.position.set(25, 5, -47);
@@ -361,7 +369,7 @@ async function addCube(){
     tree.position.set(40,0,-35)
     // scooter.rotation.z=Math.PI*-0.5;
     scene.add(tree)
-    
+
     const treeLoaddedd2=await gltfLoader.loadAsync('tree.glb')
     tree2=treeLoaddedd2.scene.children[0];
     // scooter.scale.set(4.5,4.5,4.5)
@@ -383,8 +391,41 @@ async function addCube(){
     // scooter.rotation.z=Math.PI*-0.5;
     scene.add(tree4)
 
-    
-    
+    //왼쪽 나무들
+    const treeLoaddedd5=await gltfLoader.loadAsync('tree.glb')
+    tree5=treeLoaddedd5.scene.children[0];
+    // scooter.scale.set(4.5,4.5,4.5)
+    tree5.position.set(-25,0,-38)
+    // scooter.rotation.z=Math.PI*-0.5;
+    scene.add(tree5)
+
+    const treeLoaddedd6=await gltfLoader.loadAsync('tree.glb')
+    tree6=treeLoaddedd6.scene.children[0];
+    // scooter.scale.set(4.5,4.5,4.5)
+    tree6.position.set(-25,0,-53)
+    // scooter.rotation.z=Math.PI*-0.5;
+    scene.add(tree6)
+
+    const treeLoaddedd7=await gltfLoader.loadAsync('tree.glb')
+    tree7=treeLoaddedd7.scene.children[0];
+    // scooter.scale.set(4.5,4.5,4.5)
+    tree7.position.set(-25,0,-68)
+    // scooter.rotation.z=Math.PI*-0.5;
+    scene.add(tree7)
+
+    const treeLoaddedd8=await gltfLoader.loadAsync('tree.glb')
+    tree8=treeLoaddedd8.scene.children[0];
+    // scooter.scale.set(4.5,4.5,4.5)
+    tree8.position.set(-25,0,-83)
+    // scooter.rotation.z=Math.PI*-0.5;
+    scene.add(tree8)
+
+    const treeLoaddedd9=await gltfLoader.loadAsync('tree.glb')
+    tree9=treeLoaddedd9.scene.children[0];
+    // scooter.scale.set(4.5,4.5,4.5)
+    tree9.position.set(-25,0,-23)
+    // scooter.rotation.z=Math.PI*-0.5;
+    scene.add(tree9)
 }
 
 
