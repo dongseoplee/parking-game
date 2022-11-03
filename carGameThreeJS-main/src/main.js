@@ -37,9 +37,13 @@ let std_car05
 let scooter
 let cubeBody2
 let cubeBody3
+let cubeBody2ds
+let cubeBody3ds
 let tree
 let statue
 
+let cubeThree2ds
+let cubeThree3ds
 // helpers to debug
 let controls;
 
@@ -171,9 +175,16 @@ function animate(){
   cubeThree.position.y = cubeBody.position.y - 1.3;
   cubeThree.quaternion.copy(cubeBody.quaternion);
 
-    std_car01.position.copy(cubeBody2.position);
+  std_car01.position.copy(cubeBody2.position);
+  std_car02.position.copy(cubeBody3.position);
 
-    std_car02.position.copy(cubeBody3.position);
+  //2
+  cubeThree2ds.position.copy(cubeBody2ds.position);
+  cubeThree2ds.quaternion.copy(cubeBody2ds.quaternion);
+
+  //3
+  cubeThree3ds.position.copy(cubeBody3ds.position);
+  cubeThree3ds.quaternion.copy(cubeBody3ds.quaternion);
 
   for (let i = 0; i < obstaclesBodies.length; i++) {
     obstaclesMeshes[i].position.copy(obstaclesBodies[i].position);
@@ -204,20 +215,49 @@ function addCubeBody(){
  
   world.addBody(cubeBody);
 
-    cubeBody2 = new CANNON.Body({ mass: 5 });
-    cubeBody2.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
-    // change rotation
-    cubeBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180*90);
-    cubeBody2.position.set(25, 5, -35);
-    cubeBody2.linearDamping = 0.5;
-    world.addBody(cubeBody2);
+  //2
+  let cubeShape2ds = new CANNON.Box(new CANNON.Vec3(4, 1, 0.5)); //캐논 박스 사이즈
+  //slipperyMaterial = new CANNON.Material('slippery');
+  cubeBody2ds = new CANNON.Body({ mass: 4 });
+  cubeBody2ds.addShape(cubeShape2ds, new CANNON.Vec3(0,0,0));
+  // change rotation
+  cubeBody2ds.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), Math.PI / 180 * 270);
+  //cubeBody.position.set(-35, 5, -55);
+  //x + 오른쪽, y + 위쪽, z + 앞쪽
+  cubeBody2ds.position.set(25, 1, -58.5); //캐본 박스 위치
+  
+  cubeBody2ds.linearDamping = 0.5;
+  world.addBody(cubeBody2ds);
 
-    cubeBody3 = new CANNON.Body({ mass: 5 });
-    cubeBody3.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
-    cubeBody3.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180*90);
-    cubeBody3.position.set(25, 5, -47);
-    cubeBody3.linearDamping = 0.5;
-    world.addBody(cubeBody3);
+  //3
+  let cubeShape3ds = new CANNON.Box(new CANNON.Vec3(2, 3.5, 0.5)); //캐논 박스 사이즈
+  //slipperyMaterial = new CANNON.Material('slippery');
+  cubeBody3ds = new CANNON.Body({ mass: 4 });
+  cubeBody3ds.addShape(cubeShape3ds, new CANNON.Vec3(0,0,0));
+  // change rotatio
+  cubeBody3ds.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 1, 1), Math.PI / 180 * 270);
+  //cubeBody.position.set(-35, 5, -55);
+  //x + 오른쪽, y + 위쪽, z + 앞쪽
+  cubeBody3ds.position.set(25, 6, -70); //캐본 박스 위치
+  
+  cubeBody3ds.linearDamping = 0.5;
+  world.addBody(cubeBody3ds);
+
+
+  cubeBody2 = new CANNON.Body({ mass: 5 });
+  cubeBody2.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
+  // change rotation
+  cubeBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180*90);
+  cubeBody2.position.set(25, 5, -35);
+  cubeBody2.linearDamping = 0.5;
+  world.addBody(cubeBody2);
+
+  cubeBody3 = new CANNON.Body({ mass: 5 });
+  cubeBody3.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
+  cubeBody3.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180*90);
+  cubeBody3.position.set(25, 5, -47);
+  cubeBody3.linearDamping = 0.5;
+  world.addBody(cubeBody3);
 
 }
 
@@ -230,6 +270,18 @@ async function addCube(){
   cubeThree.scale.set(0.015,0.015,0.015)
   scene.add(cubeThree)
 
+
+  //2
+  const carLoaddedd2ds = await gltfLoader.loadAsync( 'std_car01.glb' );
+	cubeThree2ds = carLoaddedd2ds.scene.children[0];
+  cubeThree2ds.scale.set(0.05, 0.03, 0.03);
+  scene.add(cubeThree2ds);
+
+  //3
+  const carLoaddedd3ds = await gltfLoader.loadAsync( 'std_car06.glb' );
+	cubeThree3ds = carLoaddedd3ds.scene.children[0];
+  cubeThree3ds.scale.set(0.15, 0.15, 0.15);
+  scene.add(cubeThree3ds);
 
     const stdLoaddedd=await gltfLoader.loadAsync('classic_muscle_car.glb');
     std_car01=stdLoaddedd.scene.children[0];
