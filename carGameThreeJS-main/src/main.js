@@ -571,7 +571,7 @@ function followPlayer(){
 function addGUI(){
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "v") {
+    if (event.key === "z") {
 
       document.getElementById("baseCamera").src = "src/assets/camera/baseCameraClick.png";
       document.getElementById("flyCamera").src = "src/assets/camera/flyCamera.png";
@@ -588,7 +588,7 @@ function addGUI(){
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "g") {
+    if (event.key === "x") {
       document.getElementById("baseCamera").src = "src/assets/camera/baseCamera.png"
       document.getElementById("flyCamera").src = "src/assets/camera/flyCameraClick.png";
       document.getElementById("carCamera").src = "src/assets/camera/carCamera.png";
@@ -604,7 +604,7 @@ function addGUI(){
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "z") {
+    if (event.key === "c") {
       document.getElementById("baseCamera").src = "src/assets/camera/baseCamera.png";
       document.getElementById("flyCamera").src = "src/assets/camera/flyCamera.png";
       document.getElementById("carCamera").src = "src/assets/camera/carCameraClick.png";
@@ -720,7 +720,7 @@ function initCannonDebugger(){
       mesh.visible = false;
 			// Toggle visibiliy on "d" press
 			document.addEventListener("keydown", (event) => {
-				if (event.key === "c") {
+				if (event.key === "v") {
 					mesh.visible = !mesh.visible;
 				}
 			});
