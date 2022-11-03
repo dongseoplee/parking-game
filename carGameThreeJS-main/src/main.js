@@ -26,8 +26,23 @@ let isParking = false
 let cameraWheel
 let isFirstPersonCamera = false
 
+
+
+//
+let std_car01
+let std_car02
+let std_car03
+let std_car04
+let std_car05
+let scooter
+let cubeBody2
+let cubeBody3
+let tree
+let statue
+
 // helpers to debug
 let controls;
+
 
 // show and move cube
 let cubeThree;
@@ -156,6 +171,10 @@ function animate(){
   cubeThree.position.y = cubeBody.position.y - 1.3;
   cubeThree.quaternion.copy(cubeBody.quaternion);
 
+    std_car01.position.copy(cubeBody2.position);
+
+    std_car02.position.copy(cubeBody3.position);
+
   for (let i = 0; i < obstaclesBodies.length; i++) {
     obstaclesMeshes[i].position.copy(obstaclesBodies[i].position);
 		obstaclesMeshes[i].quaternion.copy(obstaclesBodies[i].quaternion);
@@ -185,16 +204,88 @@ function addCubeBody(){
  
   world.addBody(cubeBody);
 
+    cubeBody2 = new CANNON.Body({ mass: 5 });
+    cubeBody2.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
+    // change rotation
+    cubeBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180*90);
+    cubeBody2.position.set(25, 5, -35);
+    cubeBody2.linearDamping = 0.5;
+    world.addBody(cubeBody2);
+
+    cubeBody3 = new CANNON.Body({ mass: 5 });
+    cubeBody3.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
+    cubeBody3.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180*90);
+    cubeBody3.position.set(25, 5, -47);
+    cubeBody3.linearDamping = 0.5;
+    world.addBody(cubeBody3);
+
 }
 
 async function addCube(){
   const gltfLoader = new GLTFLoader().setPath( 'src/assets/' );
-	const carLoaddedd = await gltfLoader.loadAsync( 'car.glb' );
+  const carLoaddedd = await gltfLoader.loadAsync( 'car.glb' );
 
 
 	cubeThree = carLoaddedd.scene.children[0];
   cubeThree.scale.set(0.015,0.015,0.015)
   scene.add(cubeThree)
+
+
+    const stdLoaddedd=await gltfLoader.loadAsync('classic_muscle_car.glb');
+    std_car01=stdLoaddedd.scene.children[0];
+    std_car01.scale.set(0.85,0.85,0.85);
+    std_car01.rotation.z=Math.PI*0.5;
+    scene.add(std_car01)
+
+    const std2Loaddedd=await gltfLoader.loadAsync('carr.glb');
+    std_car02=std2Loaddedd.scene.children[0];
+    std_car02.scale.set(0.9,0.9,0.9)
+    std_car02.rotation.z=Math.PI*0.5;
+    scene.add(std_car02)
+
+    //just gltf car
+
+    const std3Loaddedd=await gltfLoader.loadAsync('std_car03.glb');
+    std_car03=std3Loaddedd.scene.children[0];
+    std_car03.scale.set(0.015,0.015,0.015)
+    std_car03.position.set(-14,0,-47)
+    std_car03.rotation.z=Math.PI*0.5;
+    scene.add(std_car03)
+
+    const std4Loaddedd=await gltfLoader.loadAsync('std_car04.glb');
+    std_car04=std4Loaddedd.scene.children[0];
+    std_car04.scale.set(0.015,0.015,0.015)
+    std_car04.position.set(-14,0,-42)
+    // std_car04.rotation.z=Math.PI*0.5;
+    scene.add(std_car04)
+
+    const std5Loaddedd=await gltfLoader.loadAsync('std_car05.glb');
+    std_car05=std5Loaddedd.scene.children[0];
+    std_car05.scale.set(0.05,0.05,0.05)
+    std_car05.position.set(-22.5,0,-42)
+    // std_car04.rotation.z=Math.PI*0.5;
+    scene.add(std_car05)
+
+    const statueLoaddedd=await gltfLoader.loadAsync('statue.glb');
+    statue=statueLoaddedd.scene.children[0];
+    statue.position.set(6,4,-80)
+    statue.scale.set(2,2,2)
+    // std_car04.rotation.z=Math.PI*0.5;
+    scene.add(statue)
+
+    const scooterLoaddedd=await gltfLoader.loadAsync('vino.glb')
+    scooter=scooterLoaddedd.scene.children[0];
+    scooter.scale.set(4.5,4.5,4.5)
+    scooter.position.set(-13,0,-35)
+    scooter.rotation.z=Math.PI*-0.5;
+    scene.add(scooter)
+
+    const treeLoaddedd=await gltfLoader.loadAsync('tree.glb')
+    tree=treeLoaddedd.scene.children[0];
+    // scooter.scale.set(4.5,4.5,4.5)
+    tree.position.set(40,0,-35)
+    // scooter.rotation.z=Math.PI*-0.5;
+    scene.add(tree)
 }
 
 
