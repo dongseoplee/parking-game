@@ -239,7 +239,7 @@ function animate(){
 function addCubeBody(){
   let cubeShape = new CANNON.Box(new CANNON.Vec3(1.5,1,5));
   //slipperyMaterial = new CANNON.Material('slippery');
-  cubeBody = new CANNON.Body({ mass: 4 });
+  cubeBody = new CANNON.Body({ mass: 1 });
   cubeBody.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
 
   // change rotation
@@ -258,7 +258,7 @@ function addCubeBody(){
   //2
   let cubeShape2ds = new CANNON.Box(new CANNON.Vec3(4, 1, 0.5)); //캐논 박스 사이즈
   //slipperyMaterial = new CANNON.Material('slippery');
-  cubeBody2ds = new CANNON.Body({ mass: 4 });
+  cubeBody2ds = new CANNON.Body({ mass: 1 });
   cubeBody2ds.addShape(cubeShape2ds, new CANNON.Vec3(0,0,0));
   // change rotation
   cubeBody2ds.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), Math.PI / 180 * 270);
@@ -272,7 +272,7 @@ function addCubeBody(){
   //3
   let cubeShape3ds = new CANNON.Box(new CANNON.Vec3(2, 3.5, 0.5)); //캐논 박스 사이즈
   //slipperyMaterial = new CANNON.Material('slippery');
-  cubeBody3ds = new CANNON.Body({ mass: 4 });
+  cubeBody3ds = new CANNON.Body({ mass: 1 });
   cubeBody3ds.addShape(cubeShape3ds, new CANNON.Vec3(0,0,0));
   // change rotatio
   cubeBody3ds.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 1, 1), Math.PI / 180 * 270);
@@ -284,7 +284,7 @@ function addCubeBody(){
   world.addBody(cubeBody3ds);
 
 
-  cubeBody2 = new CANNON.Body({ mass: 5 });
+  cubeBody2 = new CANNON.Body({ mass: 1 });
   cubeBody2.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
   // change rotation
   cubeBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180*90);
@@ -292,7 +292,7 @@ function addCubeBody(){
   cubeBody2.linearDamping = 0.5;
   world.addBody(cubeBody2);
 
-  cubeBody3 = new CANNON.Body({ mass: 5 });
+  cubeBody3 = new CANNON.Body({ mass: 1 });
   cubeBody3.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
   cubeBody3.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180*90);
   cubeBody3.position.set(25, 5, -47);
