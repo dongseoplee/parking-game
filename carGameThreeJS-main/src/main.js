@@ -882,10 +882,11 @@ function createCustomShape(){
       if((wheelBody3.position.x > 21.3 && wheelBody3.position.x <26) && 
       (wheelBody3.position.z < -40.5 && wheelBody3.position.z >-43)) {
         console.log("주차성공");
+        document.getElementById("parkingGear").src = "src/assets/keyboard/gearP3.png";
         //p누르면 넘어감
         if(gearLock)
         {
-            localStorage.setItem('result', time);
+            localStorage.setItem('result1', time);
             // setTimeout(function(){window.location.href= "./index2.html"},500);
             setTimeout(function(){window.location.href= "./index2.html"},500);
         }
@@ -933,7 +934,7 @@ var x = setInterval(function(){
 
   if(time<0){
     //obviously, time score is 0 if timeout
-    localStorage.setItem('result', 0);
+    localStorage.setItem('result1', 0);
 
     countDown.pause();
     clearInterval (x);

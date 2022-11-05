@@ -79,12 +79,6 @@ var time = 60;
 var min = "";
 var sec = "";
 
-<<<<<<< HEAD
-=======
-var first = true;
-
->>>>>>> J1-coding
-
 init();
 
 async function init() {
@@ -857,24 +851,11 @@ function createCustomShape(){
       if((wheelBody3.position.x > 26.3 && wheelBody3.position.x < 34.8) && 
       (wheelBody3.position.z < -62 && wheelBody3.position.z > -64.2)) {
         console.log("주차성공");
-<<<<<<< HEAD
-        //p누르면 넘어감
-        if(gearLock)
-        {
-            localStorage.setItem('result', time);
-=======
         document.getElementById("parkingGear").src = "src/assets/keyboard/gearP3.png";
         //p누르면 넘어감
         if(gearLock)
         {
-          if(first)
-          {
             localStorage.setItem('result3', time);
-            const checkconsole = localStorage.getItem('result3') || null
-            console.log(checkconsole + '3차');
-            first = false;
-          }
->>>>>>> J1-coding
             // setTimeout(function(){window.location.href= "./index2.html"},500);
             setTimeout(function(){window.location.href= "./end_src/timeout.html"},500);
         }
@@ -920,11 +901,7 @@ var x = setInterval(function(){
 
   if(time<0){
     //obviously, time score is 0 if timeout
-<<<<<<< HEAD
-    localStorage.setItem('result', 0);
-=======
     localStorage.setItem('result3', 0);
->>>>>>> J1-coding
 
     countDown.pause();
     clearInterval (x);

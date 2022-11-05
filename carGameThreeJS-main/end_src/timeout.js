@@ -122,8 +122,26 @@ function main() {
   // makePerson(+3, 150, 32, 'Red Menace', 'red');
 
   //Time 
-  const checkResult = localStorage.getItem('result') || null
-  makePerson(-0, 400, 50, checkResult, 'red');
+  const checkResult1 = localStorage.getItem('result1') || null
+  if(checkResult1==null)
+  {
+    checkResult1 = 0;
+  }
+  const checkResult2 = localStorage.getItem('result2') || null
+  if(checkResult2==null)
+  {
+    checkResult2 = 0;
+  }
+  const checkResult3 = localStorage.getItem('result3') || null
+  if(checkResult3==null)
+  {
+    checkResult3 = 0;
+  }
+  var checkResult = parseInt(checkResult1) + parseInt(checkResult2) + parseInt(checkResult3)
+  var finalScore = Math.round(checkResult / 180 * 100);
+  makePerson(4, 400, 75, finalScore + '/100', 'red');
+  makePerson(-1, 400, 50, 'Score(remain time):', 'red');
+  
 
   function resizeRendererToDisplaySize(renderer) {
     const canvas = renderer.domElement;

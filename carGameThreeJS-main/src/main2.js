@@ -874,12 +874,13 @@ function createCustomShape(){
       if((wheelBody3.position.x > -26.6 && wheelBody3.position.x < -23.8) && 
       (wheelBody3.position.z < -30 && wheelBody3.position.z > -35.4)) {
         console.log("주차성공");
+        document.getElementById("parkingGear").src = "src/assets/keyboard/gearP3.png";
         //p누르면 넘어감
         if(gearLock)
         {
-            localStorage.setItem('result', time);
+            localStorage.setItem('result2', time);
             // setTimeout(function(){window.location.href= "./index2.html"},500);
-            setTimeout(function(){window.location.href= "./end_src/timeout.html"},500);
+            setTimeout(function(){window.location.href= "./index3.html"},500);
         }
       }
     }
@@ -923,7 +924,7 @@ var x = setInterval(function(){
 
   if(time<0){
     //obviously, time score is 0 if timeout
-    localStorage.setItem('result', 0);
+    localStorage.setItem('result2', 0);
 
     countDown.pause();
     clearInterval (x);

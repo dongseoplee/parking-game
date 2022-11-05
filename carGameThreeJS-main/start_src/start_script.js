@@ -50,7 +50,7 @@
 			antialias: true
 		});
 
-		renderer.setClearColor("rgb(66, 234, 221)");
+		renderer.setClearColor("rgb(10, 39, 101)");
 		renderer.setPixelRatio(window.devicePixelRatio);
 		renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -298,8 +298,8 @@
 	function createButton() {
 		var baseGeometry = new THREE.CylinderGeometry(29, 29, 4, 64),
 			textMaterial = new THREE.MeshLambertMaterial({
-				color: 0x39ECEC,
-				emissive: 0x39ECEC,
+				color: 0xffffff,
+				emissive: 0xffffff,
 				overdraw: 0.5
 			}),
 			textGeometry = new THREE.TextGeometry('START', {
