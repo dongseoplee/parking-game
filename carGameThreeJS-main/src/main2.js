@@ -137,7 +137,6 @@ async function init() {
   addBackground();
   //firework
 
-
   addPlaneBody();
   addPlane();
 
@@ -163,11 +162,8 @@ async function init() {
 }
 
 
-
 function addWall() {
-  
-
-  const texture = new THREE.TextureLoader().load( "src/assets/wall2.png" );
+  const texture = new THREE.TextureLoader().load( "src/assets/wall3.jpeg" );
 
   //크기
   let geometry =  new THREE.BoxGeometry(100, 0, 50);
@@ -399,12 +395,7 @@ async function addCube(){
     scene.add(tree4)
 
     //왼쪽 나무들
-    const treeLoaddedd5=await gltfLoader.loadAsync('tree.glb')
-    tree5=treeLoaddedd5.scene.children[0];
-    // scooter.scale.set(4.5,4.5,4.5)
-    tree5.position.set(-25,0,-38)
-    // scooter.rotation.z=Math.PI*-0.5;
-    scene.add(tree5)
+
 
     const treeLoaddedd6=await gltfLoader.loadAsync('tree.glb')
     tree6=treeLoaddedd6.scene.children[0];
@@ -427,12 +418,6 @@ async function addCube(){
     // scooter.rotation.z=Math.PI*-0.5;
     scene.add(tree8)
 
-    const treeLoaddedd9=await gltfLoader.loadAsync('tree.glb')
-    tree9=treeLoaddedd9.scene.children[0];
-    // scooter.scale.set(4.5,4.5,4.5)
-    tree9.position.set(-25,0,-23)
-    // scooter.rotation.z=Math.PI*-0.5;
-    scene.add(tree9)
 }
 
 function addWheelBody(){
@@ -521,7 +506,7 @@ function addPlaneBody(){
 }
 
 function addPlane(){
-  const texture = new THREE.TextureLoader().load( "src/assets/parking.png" );
+  const texture = new THREE.TextureLoader().load( "src/assets/parking2.png" );
 
   let geometry =  new THREE.BoxGeometry(100, 0, 100);
   let material = new THREE.MeshBasicMaterial({map: texture});
@@ -887,15 +872,13 @@ function createCustomShape(){
         {
             localStorage.setItem('result', time);
             // setTimeout(function(){window.location.href= "./index2.html"},500);
-            setTimeout(function(){window.location.href= "./index2.html"},500);
+            setTimeout(function(){window.location.href= "./end_src/timeout.html"},500);
         }
       }
     }
       
 }
-
-
-//BGM here!!!!!!!
+//BGM here!!
 window.addEventListener("DOMContentLoaded", event => {
   const audio = document.querySelector("audio");
   audio.volume = 0.6;
