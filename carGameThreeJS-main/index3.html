@@ -1,0 +1,137 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Game</title>
+  <style>
+    body { margin: 0; }
+
+    /* center on top */
+    #instructions {
+      position: absolute;
+      top: 10;
+
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      color: #ffffff;
+      text-align: center;
+    }
+  </style>
+  <script type="text/javascript" src="./src/main3.js"></script>
+</head>
+<body>
+  
+  <!--firework==>-->
+  <div id="WebGL-output"></div>
+
+  <div style= "position: absolute" style="color: white">
+    <p style="color: white">W,A,S,D = Move</p>
+    <p style="color: white">P = Parking</p>
+    <p style="color: white">Z,X,C = Camera</p>
+  </div>
+
+  <!--timer-->
+  <!-- <script>
+    var time = 60;
+    var min = "";
+    var sec = "";
+    
+
+    var x = setInterval(function(){
+      //var countDown = document.getElementById("countDownSound").innerHTML;
+      min = parseInt(TimerJS.time/60);
+      sec=TimerJS.time%60;
+      document.getElementById("timer").innerHTML=min+"m"+" "+sec+"s";
+      --TimerJS.time;
+
+      // if(time<11)
+      // {
+      //   countDown.play();
+      // }
+
+      if(TimerJS.time<0){
+        clearInterval (x);
+        document.getElementById("timer").innerHTML = "Time Over"
+        //setTimeout(function(){window.location.href= "./end_src/timeout.html"},100);
+        //go to timeout.html
+
+
+      }
+    },1000);
+  </script> -->
+
+  <div id="instructions">
+
+    <br>
+    <h1 id="timer"></h1>
+  </div>
+    <!-- 화면 오른쪽 방향키 -->
+    <img id = "arrowRight" src="src/assets/keyboard/arrowRight.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; bottom:50px; right:20;">
+    <img id = "arrowDown" src="src/assets/keyboard/arrowDown.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; bottom:50px; right:100;">
+    <img id = "arrowLeft" src="src/assets/keyboard/arrowLeft.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; bottom:50px; right:180;">
+    <img id = "arrowUp" src="src/assets/keyboard/arrowUp.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; bottom:135px; right:100;">
+    <img id = "parkingGear" src="src/assets/keyboard/gearP2.png" alt="gear Parking" width="75" height="75" 
+    style= "position: absolute; bottom:135px; right:20;">
+
+    <!-- 화면 왼쪽 키보드 -->
+
+    <!-- <img id = "img1" src="src/assets/213.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; bottom:50px; left:20;">
+    <img id = "img2" src="src/assets/213.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; bottom:50px; left:100;">
+    <img id = "img3" src="src/assets/213.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; bottom:50px; left:180;">
+    <img id = "img4" src="src/assets/213.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; bottom:50px; left:260;">
+
+    <img id = "img5" src="src/assets/213.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; bottom:135; left:20;">
+    <img id = "img6" src="src/assets/213.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; bottom:135; left:100;">
+    <img id = "img7" src="src/assets/213.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; bottom:135; left:180;">
+    <img id = "img8" src="src/assets/213.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; bottom:135; left:260;"> -->
+
+    <!-- 화면 상단 키보드 -->
+    <img id = "carCamera" src="src/assets/camera/carCamera.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; top:20; right:20;">
+    <img id = "flyCamera" src="src/assets/camera//flyCamera.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; top:20; right:100;">
+    <img id = "baseCamera" src="src/assets/camera/baseCameraClick.png" alt="My Image" width="75" height="75" 
+    style= "position: absolute; top:20; right:180;">
+
+    <audio src="./src/assets/BGM_Candy.mp3"></audio> 
+    <audio src="./src/assets/engineSound.mp3" id="engineSound" class="hidden" preload="none"></audio>
+    <audio src="./src/assets/reverseSound.mp3" id="reverseSound" class="hidden" preload="none"></audio>
+    <audio src="./src/assets/parkingSound.mp3" id="parkingSound" class="hidden" preload="none"></audio>
+    <audio src="./src/assets/gearShiftSound.mp3" id="gearShiftSound" class="hidden" preload="none"></audio>
+    <audio src="./src/assets/countDownSound.mp3" id="countDownSound" class="hidden" preload="none"></audio>
+    <audio src="./src/assets/timeoutSound.mp3" id="timeoutSound" class="hidden" preload="none"></audio>
+    
+    
+  <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./threejs/build/three.module.js",
+        "cannon-es": "./cannonjs/cannon-es.js"
+      }
+    }
+  </script>
+
+  <div id="threejs"> </div>
+  <script src="./src/main2.js" type="module"></script>
+
+</body>
+</html>
