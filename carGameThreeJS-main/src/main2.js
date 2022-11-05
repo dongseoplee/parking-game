@@ -241,8 +241,8 @@ function addCubeBody(){
   // change rotation
   cubeBody.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180);
   
-  cubeBody.position.set(-35, 5, -55);
-  //cubeBody.position.set(15, 5, -50);
+  cubeBody.position.set(2, 5, -70);
+  //cubeBody.position.set(-40, 5, -50);
   cubeBody.linearDamping = 0.5;
 
   vehicle = new CANNON.RigidVehicle({
@@ -280,12 +280,13 @@ function addCubeBody(){
   world.addBody(cubeBody3ds);
 
 
+  //평행주차 장애물
   cubeBody2 = new CANNON.Body({ mass: 5 });
   cubeBody2.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
   // change rotation
-  cubeBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180*90);
-  cubeBody2.position.set(25, 5, -35);
+  cubeBody2.position.set(-24, 3, -21.5);
   cubeBody2.linearDamping = 0.5;
+  cubeBody2.quaternion.setFromAxisAngle(new CANNON.Vec3(0, 1, 0), Math.PI / 180*180);
   world.addBody(cubeBody2);
 
   cubeBody3 = new CANNON.Body({ mass: 5 });
@@ -320,7 +321,7 @@ async function addCube(){
     const stdLoaddedd=await gltfLoader.loadAsync('classic_muscle_car.glb');
     std_car01=stdLoaddedd.scene.children[0];
     std_car01.scale.set(0.85,0.85,0.85);
-    std_car01.rotation.z=Math.PI*0.5;
+    std_car01.rotation.z=Math.PI*1;
     scene.add(std_car01)
 
     const std2Loaddedd=await gltfLoader.loadAsync('carr.glb');
@@ -342,6 +343,7 @@ async function addCube(){
     std_car04=std4Loaddedd.scene.children[0];
     std_car04.scale.set(0.015,0.015,0.015)
     std_car04.position.set(-14,0,-42)
+    
     // std_car04.rotation.z=Math.PI*0.5;
     scene.add(std_car04)
 
@@ -349,6 +351,7 @@ async function addCube(){
     std_car05=std5Loaddedd.scene.children[0];
     std_car05.scale.set(0.05,0.05,0.05)
     std_car05.position.set(-22.5,0,-42)
+    
     // std_car04.rotation.z=Math.PI*0.5;
     scene.add(std_car05)
 
@@ -520,7 +523,10 @@ function addObstacleBody(){
     let obstacleShape = new CANNON.Box(new CANNON.Vec3(1, 1, 1));
     obstacleBody = new CANNON.Body({ mass: 0.5 });
     obstacleBody.addShape(obstacleShape);
-		obstacleBody.position.set(-30, 2, -30);
+		
+    //평행주차 장애물
+    //obstacleBody.position.set(-25, 2, -30);
+    obstacleBody.position.set(0, 2, -30);
 
     world.addBody(obstacleBody);
     obstaclesBodies.push(obstacleBody);
@@ -528,7 +534,7 @@ function addObstacleBody(){
     //2
     obstacleBody = new CANNON.Body({ mass: 0.5 });
     obstacleBody.addShape(obstacleShape);
-		obstacleBody.position.set(-30, 2, -35);
+		obstacleBody.position.set(0, 2, -10);
 
     world.addBody(obstacleBody);
     obstaclesBodies.push(obstacleBody);
@@ -536,7 +542,7 @@ function addObstacleBody(){
     //3
     obstacleBody = new CANNON.Body({ mass: 0.5 });
     obstacleBody.addShape(obstacleShape);
-		obstacleBody.position.set(-30, 2, -40);
+		obstacleBody.position.set(-30, 2, -10);
 
     world.addBody(obstacleBody);
     obstaclesBodies.push(obstacleBody);
@@ -544,7 +550,7 @@ function addObstacleBody(){
     //4
     obstacleBody = new CANNON.Body({ mass: 0.5 });
     obstacleBody.addShape(obstacleShape);
-		obstacleBody.position.set(-30, 2, -45);
+		obstacleBody.position.set(-23, 2, -45);
 
     world.addBody(obstacleBody);
     obstaclesBodies.push(obstacleBody);
@@ -552,7 +558,7 @@ function addObstacleBody(){
     //5
     obstacleBody = new CANNON.Body({ mass: 0.5 });
     obstacleBody.addShape(obstacleShape);
-		obstacleBody.position.set(-30, 2, -50);
+		obstacleBody.position.set(-26, 2, -45);
 
     world.addBody(obstacleBody);
     obstaclesBodies.push(obstacleBody);
@@ -859,13 +865,14 @@ function createCustomShape(){
 
  function checkParkingLot() {
 
-    //왼쪽 바퀴가 주차 공간에 들어 왔을 경우
-
-    if((wheelBody1.position.x > 26 && wheelBody1.position.x <30.2) &&
-     (wheelBody1.position.z < -38 && wheelBody1.position.z >-40.5))
+    
+    // 오른쪽 앞바퀴
+    if((wheelBody1.position.x < -21.3 && wheelBody1.position.x > -24) &&
+     (wheelBody1.position.z > -40.8 && wheelBody1.position.z < -35.5))
     {
-      if((wheelBody3.position.x > 21.3 && wheelBody3.position.x <26) && 
-      (wheelBody3.position.z < -40.5 && wheelBody3.position.z >-43)) {
+      // 왼쩍 뒷바퀴
+      if((wheelBody3.position.x > -26.6 && wheelBody3.position.x < -23.8) && 
+      (wheelBody3.position.z < -30 && wheelBody3.position.z > -35.4)) {
         console.log("주차성공");
         //p누르면 넘어감
         if(gearLock)
