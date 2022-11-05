@@ -535,7 +535,7 @@ function addObstacleBody(){
     let obstacleShape = new CANNON.Box(new CANNON.Vec3(1, 1, 1));
     obstacleBody = new CANNON.Body({ mass: 0.5 });
     obstacleBody.addShape(obstacleShape);
-		obstacleBody.position.set(-30, 2, -30);
+		obstacleBody.position.set(-10, 2, -10);
 
     world.addBody(obstacleBody);
     obstaclesBodies.push(obstacleBody);
@@ -543,7 +543,7 @@ function addObstacleBody(){
     //2
     obstacleBody = new CANNON.Body({ mass: 0.5 });
     obstacleBody.addShape(obstacleShape);
-		obstacleBody.position.set(-30, 2, -35);
+		obstacleBody.position.set(-30, 2, 0);
 
     world.addBody(obstacleBody);
     obstaclesBodies.push(obstacleBody);
@@ -551,7 +551,7 @@ function addObstacleBody(){
     //3
     obstacleBody = new CANNON.Body({ mass: 0.5 });
     obstacleBody.addShape(obstacleShape);
-		obstacleBody.position.set(-30, 2, -40);
+		obstacleBody.position.set(15, 2, -10);
 
     world.addBody(obstacleBody);
     obstaclesBodies.push(obstacleBody);
@@ -559,7 +559,7 @@ function addObstacleBody(){
     //4
     obstacleBody = new CANNON.Body({ mass: 0.5 });
     obstacleBody.addShape(obstacleShape);
-		obstacleBody.position.set(-30, 2, -45);
+		obstacleBody.position.set(5, 2, -40);
 
     world.addBody(obstacleBody);
     obstaclesBodies.push(obstacleBody);
@@ -567,7 +567,7 @@ function addObstacleBody(){
     //5
     obstacleBody = new CANNON.Body({ mass: 0.5 });
     obstacleBody.addShape(obstacleShape);
-		obstacleBody.position.set(-30, 2, -50);
+		obstacleBody.position.set(-40, 2, -30);
 
     world.addBody(obstacleBody);
     obstaclesBodies.push(obstacleBody);
