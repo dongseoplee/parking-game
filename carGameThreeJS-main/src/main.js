@@ -935,6 +935,8 @@ var x = setInterval(function(){
   if(time<0){
     //obviously, time score is 0 if timeout
     localStorage.setItem('result1', 0);
+    localStorage.setItem('result2', 0);
+    localStorage.setItem('result3', 0);
 
     countDown.pause();
     clearInterval (x);
