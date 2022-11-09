@@ -239,7 +239,7 @@ function animate(){
 function addCubeBody(){
   let cubeShape = new CANNON.Box(new CANNON.Vec3(1.5,1,5));
   //slipperyMaterial = new CANNON.Material('slippery');
-  cubeBody = new CANNON.Body({ mass: 1 });
+  cubeBody = new CANNON.Body({ mass: 4 });
   cubeBody.addShape(cubeShape, new CANNON.Vec3(0,0,-1));
 
   // change rotation
