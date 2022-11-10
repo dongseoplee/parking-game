@@ -699,9 +699,9 @@ function moveCar() {
     const maxSteerVal = Math.PI / 8;
     const maxForce = 10;
 
-    switch (event.key) {
-      //case 'w':
-      case 'ArrowUp':
+    switch (event.keyCode) {
+      //case 'ArrowUp':
+      case 38:
 
         if(!gearLock){
         document.getElementById("arrowUp").src = "src/assets/keyboard/arrowUpClick.png";
@@ -714,8 +714,8 @@ function moveCar() {
         }
         break;
 
-      //case 's':
-      case 'ArrowDown':
+      //case 'ArrowDown':
+      case 40:
         if(!gearLock){
         document.getElementById("arrowDown").src = "src/assets/keyboard/arrowDownClick.png";
         vehicle.setWheelForce(-maxForce / 2, 0);
@@ -727,8 +727,8 @@ function moveCar() {
         }
         break;
 
-      //case 'a':
-      case 'ArrowLeft':
+      //case 'ArrowLeft':
+      case 37:
         if(!gearLock){
         document.getElementById("arrowLeft").src = "src/assets/keyboard/arrowLeftClick.png";
         vehicle.setSteeringValue(maxSteerVal, 0);
@@ -736,8 +736,8 @@ function moveCar() {
         }
         break;
 
-      //case 'd':
-      case 'ArrowRight':
+      //case 'ArrowRight':
+      case 39:
         if(!gearLock){
         document.getElementById("arrowRight").src = "src/assets/keyboard/arrowRightClick.png";
         vehicle.setSteeringValue(-maxSteerVal, 0);
@@ -745,13 +745,14 @@ function moveCar() {
         }
         break;
       
-      case 't':
+      //case 't'
+      case 84:
         console.log("오른쪽 앞바퀴" + "x:" + wheelBody1.position.x + " y:" + wheelBody1.position.y + " z:"+ wheelBody1.position.z)
         console.log("오른쪽 뒷바퀴" + "x:" + wheelBody4.position.x + " y:" + wheelBody4.position.y + " z:"+ wheelBody4.position.z)
         break;
 
-        //parking
-      case 'p':
+      //case 'p' parking
+      case 80:
         
         if(!gearLock){
           document.getElementById("parkingGear").src = "src/assets/keyboard/gearP.png";
