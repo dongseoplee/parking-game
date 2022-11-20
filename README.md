@@ -4,7 +4,7 @@
 
 ```
 Start the game by running start.html
-Please check your keyboard input.
+
 ```
 
 # Practice parking with a parking game!
