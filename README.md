@@ -4,7 +4,6 @@
 
 ```
 Start the game by running start.html
-Keyboard input is in English only. (Camera, Parking button)
 Please check your keyboard input.
 ```
 
